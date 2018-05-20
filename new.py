@@ -92,7 +92,7 @@ while camera.isOpened():
 
         # get the coutours
         thresh1 = copy.deepcopy(thresh)
-        contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        x, contours, y = cv2.findContours(thresh1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         length = len(contours)
         maxArea = -1
         if length > 0:
@@ -122,7 +122,7 @@ while camera.isOpened():
     if k == 27:  # press ESC to exit
         break
     elif k == ord('b'):  # press 'b' to capture the background
-        bgModel = cv2.BackgroundSubtractorMOG2(0, bgSubThreshold)
+        bgModel = cv2.createBackgroundSubtractorMOG2(0, bgSubThreshold)
         isBgCaptured = 1
         print '!!!Background Captured!!!'
     elif k == ord('r'):  # press 'r' to reset the background
